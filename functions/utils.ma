@@ -1,17 +1,9 @@
-# Utility Functions - ZenCleaner
-# Global rules applicable to all sites
-
-@global {
-    # Common Ad Containers
-    .ad-banner -> remove()
-    .adsbox -> remove()
-    [id^="google_ads"] -> remove()
-    [id^="div-gpt-ad"] -> remove()
-    
-    # GDPR Cookie Banners (Example)
-    # .cookie-consent -> remove()
-    # #onetrust-banner-sdk -> remove()
+fn kill_by_class(keyword) {
+    remove() when @class == keyword
 }
-
-# Variable Definitions (Example)
-$ad_selectors = .ad, .advertisement, .sponsor
+fn kill_by_id(keyword) {
+    remove() when @id == keyword
+}
+fn kill_by_rel(keyword){
+    remove() when @rel.contains(keyword)
+}
